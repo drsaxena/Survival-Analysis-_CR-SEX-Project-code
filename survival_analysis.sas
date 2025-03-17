@@ -39,6 +39,14 @@ proc phreg data=M2_1 covm;
 
 run;
 
+proc lifetest data=M2_1 plots=survival( test atrisk
+(atrisktick maxlen=13 outside)=0 50 100 150 200 250 300 350);
+  time length;
+  strata sex cr;
+run; 
+
+/*TO GET KAPLAN MEIER NOT FROM 0 Y AXIS*/
+/*WHEN PI WANTS TO ADJUST THE START POINT OF Y AXIS TO HAVE A MORE XOOMED GRAPH*/
 data _null_;
 
    %let url = //support.sas.com/documentation/onlinedoc/stat/ex_code/151;
